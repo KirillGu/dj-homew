@@ -1,4 +1,6 @@
 from django.shortcuts import render
+import pandas as pd
+import json
 
 def inflation_view(request):
     template_name = 'inflation.html'
