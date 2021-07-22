@@ -4,7 +4,10 @@ def inflation_view(request):
     template_name = 'inflation.html'
 
     # чтение csv-файла и заполнение контекста
-    context = {}
+    df = pd.read_csv('inflation_russia.csv', sep=';')
+    json_rec = df.reset_index().to_json(orient='records')
+    data = json.loads(json_rec)
+    context = {'data': data}
 
     return render(request, template_name,
                   context)
